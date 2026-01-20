@@ -56,8 +56,11 @@ const WelcomeView: React.FC<Props> = ({ onStart }) => {
             <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer"></div>
           </button>
           
-          <button className="flex w-full items-center justify-center rounded-full h-16 bg-transparent border-2 border-primary/30 text-primary text-xl font-bold transition-colors hover:bg-primary/5 active:scale-95">
-            I already have an account
+          <button 
+            onClick={onStart}
+            className="flex w-full items-center justify-center rounded-full h-16 bg-transparent border-2 border-primary/30 text-primary text-xl font-bold transition-colors hover:bg-primary/5 active:scale-95"
+          >
+            Skip
           </button>
         </div>
 
