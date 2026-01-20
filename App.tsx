@@ -87,7 +87,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full max-w-md mx-auto relative overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+    <div className="flex flex-col h-screen w-screen md:h-full md:max-w-md md:mx-auto relative overflow-hidden bg-background-light dark:bg-background-dark md:shadow-2xl">
       {renderView()}
     </div>
   );
