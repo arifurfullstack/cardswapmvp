@@ -1,0 +1,7 @@
+{
+  "name": "CardSwap",
+  "description": "The ultimate TCG trading platform. Swap, collect, and battle with players around the world using our intuitive swipe-to-match trading system.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
