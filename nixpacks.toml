@@ -1,12 +1,5 @@
 [build]
 cmds = ["npm ci", "npm run build"]
-start = "npm run preview"
-
-[providers]
-nodeVersion = "22"
-
-[[build.cacheDirectories]]
-path = "node_modules"
 
 [env]
 NODE_ENV = "production"
