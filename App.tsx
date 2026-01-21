@@ -89,6 +89,27 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen w-screen md:h-full md:max-w-md md:mx-auto relative overflow-hidden bg-background-light dark:bg-background-dark md:shadow-2xl">
       {renderView()}
+      
+      {/* Floating WhatsApp Contact Button */}
+      <a 
+        href="https://wa.me/8801707991750"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 group"
+      >
+        <div className="flex items-center gap-3 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+          <span className="material-symbols-outlined text-xl icon-filled">chat</span>
+          <span className="text-sm font-semibold group-hover:block hidden">Developer Support</span>
+        </div>
+        <div className="absolute bottom-16 right-0 bg-gray-800 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          +880 1707 991750
+        </div>
+      </a>
+
+      {/* Copyright Footer */}
+      <div className="absolute bottom-0 left-0 right-0 text-center text-xs text-slate-400 dark:text-slate-500 p-2 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/50 dark:via-background-dark/50 to-transparent">
+        <p>Made with ❤️ by Developer | <span className="text-green-500 font-semibold">Support: WhatsApp</span></p>
+      </div>
     </div>
   );
 };
