@@ -11,6 +11,7 @@ import ProfileView from './views/ProfileView';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>(View.WELCOME);
+  const [showNotification, setShowNotification] = useState(false);
   const [user, setUser] = useState<User>({
     id: 'me',
     nickname: 'AshKetchum',
@@ -37,6 +38,14 @@ const App: React.FC = () => {
   ]);
 
   const [activeMatch, setActiveMatch] = useState<TradeMatch | null>(null);
+
+  // Show notification after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowNotification(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleStartChat = (match: TradeMatch) => {
     setActiveMatch(match);
@@ -89,6 +98,56 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen w-screen md:h-full md:max-w-md md:mx-auto relative overflow-hidden bg-background-light dark:bg-background-dark md:shadow-2xl">
       {renderView()}
+
+      {/* Animated Developer Notification Popup */}
+      {showNotification && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center p-4 pointer-events-none">
+          <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 pointer-events-auto">
+            <div className="relative max-w-sm w-full bg-gradient-to-r from-green-500 to-green-600 text-white rounded-2xl shadow-2xl overflow-hidden">
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400/30 to-green-600/30 animate-pulse"></div>
+              
+              <div className="relative p-4 sm:p-6 flex items-center gap-4">
+                {/* Left side - Icon with animation */}
+                <div className="flex-shrink-0">
+                  <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-full flex items-center justify-center">
+                    <span className="material-symbols-outlined text-xl sm:text-2xl icon-filled animate-bounce">notifications_active</span>
+                  </div>
+                </div>
+
+                {/* Middle - Message */}
+                <div className="flex-grow">
+                  <h3 className="font-bold text-sm sm:text-base leading-tight">Developer Waiting!</h3>
+                  <p className="text-xs sm:text-sm text-white/90 mt-0.5">Message on WhatsApp for instant support</p>
+                </div>
+
+                {/* Right side - Close button */}
+                <button
+                  onClick={() => setShowNotification(false)}
+                  className="flex-shrink-0 text-white/80 hover:text-white transition-colors"
+                >
+                  <span className="material-symbols-outlined text-xl">close</span>
+                </button>
+              </div>
+
+              {/* Action button */}
+              <a
+                href="https://wa.me/8801707991750"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative px-4 sm:px-6 pb-4 sm:pb-6 pt-0"
+              >
+                <button className="w-full bg-white text-green-600 font-bold py-2 sm:py-3 rounded-lg hover:bg-green-50 transition-colors text-sm sm:text-base">
+                  💬 Send Message Now
+                </button>
+              </a>
+
+              {/* Animated bottom border */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-white to-green-400 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Floating WhatsApp Contact Button */}
       <a 
